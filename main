@@ -6,23 +6,29 @@
   <script>
     window.onload = function () {
       const tweets = [
-        "今日は七夕🎋 あなたと会えたのは…この人\n\nhttps://x.com/RAKUSTAofficial/status/1939920647624564762/photo/1",
-        "今日は七夕🎋 あなたと会えたのは…この人その2\n\nhttps://x.com/RAKUSTAofficial/status/1939920699910656340/photo/1",
-        "今日は七夕🎋 あなたと会えたのは…この人その3\n\nhttps://x.com/RAKUSTAofficial/status/1932348610743828879/photo/1"
+        "テスト１　私の推しです。\nhttps://x.com/RAKUSTAofficial/status/1939945575539208662/photo/1",
+        "テスト２私の推しです。\nhttps://x.com/RAKUSTAofficial/status/1939920699910656340",
+        "テスト３私の推しです。\nhttps://x.com/RAKUSTAofficial/status/1939920647624564762/photo/1"
       ];
 
-      // ランダムに1つ選ぶ
-      const randomText = tweets[Math.floor(Math.random() * tweets.length)];
+      // シャッフル関数で順番をランダムに
+      function shuffle(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+      }
 
-      // URLエンコード
+      const shuffled = shuffle([...tweets]);
+      const randomText = shuffled[0];
+
       const encodedText = encodeURIComponent(randomText);
-
-      // Twitter投稿リンクへリダイレクト
       window.location.href = "https://twitter.com/intent/tweet?text=" + encodedText;
     };
   </script>
 </head>
 <body>
-  <p>投稿画面へ移動中...</p>
+  <p>推し準備中...</p>
 </body>
 </html>

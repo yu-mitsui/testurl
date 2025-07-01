@@ -2,23 +2,27 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>ランダムジャンプ中...</title>
+  <title>テスト</title>
   <script>
-    window.onload = function() {
-      const urls = [
-        "https://twitter.com/intent/tweet?text=今日は七夕🎋%0Aあなたと会えたのは…この人%0A%0Ahttps%3A%2F%2Fx.com%2FRAKUSTAofficial%2Fstatus%2F1939920647624564762%2Fphoto%2F1
-",
-        "https://twitter.com/intent/tweet?text=今日は七夕🎋%0Aあなたと会えたのは…この人その２%20%0A%0Ahttps%3A%2F%2Fx.com%2FRAKUSTAofficial%2Fstatus%2F1939920699910656340%2Fphoto%2F1
-",
-  "https://twitter.com/intent/tweet?text=今日は七夕🎋%0Aあなたと会えたのは…この人その3%20%0A%0Ahttps%3A%2F%2Fx.com%2FRAKUSTAofficial%2Fstatus%2F1932348610743828879%2Fphoto%2F1
-",      
+    window.onload = function () {
+      const tweets = [
+        "今日は七夕🎋 あなたと会えたのは…この人\n\nhttps://x.com/RAKUSTAofficial/status/1939920647624564762/photo/1",
+        "今日は七夕🎋 あなたと会えたのは…この人その2\n\nhttps://x.com/RAKUSTAofficial/status/1939920699910656340/photo/1",
+        "今日は七夕🎋 あなたと会えたのは…この人その3\n\nhttps://x.com/RAKUSTAofficial/status/1932348610743828879/photo/1"
       ];
-      const randomIndex = Math.floor(Math.random() * urls.length);
-      window.location.href = urls[randomIndex];
+
+      // ランダムに1つ選ぶ
+      const randomText = tweets[Math.floor(Math.random() * tweets.length)];
+
+      // URLエンコード
+      const encodedText = encodeURIComponent(randomText);
+
+      // Twitter投稿リンクへリダイレクト
+      window.location.href = "https://twitter.com/intent/tweet?text=" + encodedText;
     };
   </script>
 </head>
 <body>
-  <p>ランダムにジャンプしています...</p>
+  <p>投稿画面へ移動中...</p>
 </body>
 </html>
